@@ -24,7 +24,7 @@
 
 	</header>
 
-	<div class="mui-scroll-wrapper">
+	<div class="mui-scroll-wrapper"  id="pullrefresh" >   <!-- 这个id用来下来刷新 -->
 		<div class="container mui-scroll">  <!--  由于顶部和尾部固定定位，所以才加个容器 再套个div使用mui的区域滚动 -->
 			<div class="searchbox">
 				<form action="searchlist.html" method="get">
@@ -35,16 +35,16 @@
 			
 			<div class="sort">
 				<ul class="mui-clearfix">
-					<li ><a class="now" href="#"><span>上架时间</span> <span class="fa fa-angle-down"></span></a></li>
-					<li><a href="#"><span>价格</span> <span class="fa fa-angle-down"></span></a></li>
-					<li><a href="#"><span>销量</span> <span class="fa fa-angle-down"></span></a></li>
-					<li><a href="#"><span>折扣</span> <span class="fa fa-angle-down"></span></a></li>
+					<li ><a class="now" href="#" data-sort='time'><span>上架时间</span> <span class="fa fa-angle-down"></span></a></li>
+					<li><a href="#" data-sort='price'><span>价格</span> <span class="fa fa-angle-down"></span></a></li>
+					<li><a href="#" data-sort='salenums'><span>销量</span> <span class="fa fa-angle-down"></span></a></li>
+					<li><a href="#" data-sort='scale'><span>折扣</span> <span class="fa fa-angle-down"></span></a></li>
 				</ul>
 			</div>
 
 			<section class="product">
-				<ul class="mui-clearfix">
-					<li><a href="#">
+				<ul class="mui-clearfix">   <!-- //使用js生成 -->
+					<!-- <li><a href="#">
 						<img src="images/product.jpg">
 						<p>adidas阿迪达斯 男式 场下休闲篮球鞋S83700</p>	
 					    <div class="price"><span>¥560.00</span> <span>¥888.00</span></div>
@@ -79,8 +79,9 @@
 						<p>adidas阿迪达斯 男式 场下休闲篮球鞋S83700</p>	
 					    <div class="price"><span>¥560.00</span> <span>¥888.00</span></div>
 						<button >立即购买</button>
-					</a></li>			
+					</a></li>	 -->		
 				</ul>
+				<p class="lastdata" style="text-align: center; margin-top:10px "></p>
 			</section>
 
 		</div>

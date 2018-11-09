@@ -39,13 +39,17 @@ body{
 	}
  }
 
+.mui-scroll-wrapper{
+	margin-top: 45px;
+}
+
 .container{
-	padding: 0 0 50px 0;
+	padding: 0px 0 50px 0;
 }
 
 
 .searchbox{
-	padding:  45px  0 10px 0;
+	padding:  0  0 10px 0;    // 这里空出padding上边距是可以的，但是这个mui下来刷新添加的div是以大容器为定位的，所以后来又改成大容器空出m-t了（pading的话需要再套个容器）
 	form{
 		width: 100%;
 		padding: 10px 10px 0px 10px;
