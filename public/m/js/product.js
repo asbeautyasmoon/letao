@@ -84,14 +84,14 @@ $.get('/product/queryProductDetail',{id:localparm.productId},function(r){
       			if(r.error){
       				mui.toast(r.message);
       				if(r.error == 400){
-	                location.href = 'login.html' + '?returnUrl=' + location.href;
+	                location.href = '/m/user/login.html' + '?returnUrl=' + location.href;
 	                return false;
 	      			}
 	      		}	
       			if(r.success){
       				 mui.confirm('添加成功，去购物车看看？', '温馨提示', ['是', '否'], function(e) {
                             if (e.index == 0) {
-                                location.href = 'cart.html';
+                                location.href = '/m/user/cart.html';
                             } else {
                                 //TODO
                             }
