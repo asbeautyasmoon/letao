@@ -10,11 +10,11 @@
     <meta name="description" content="乐淘是中国最大的正品运动鞋、皮鞋网上专卖。乐淘网经营的品牌包括耐克、阿迪达斯、李宁、匡威等国内外知名品牌的篮球鞋,板鞋,休闲鞋,跑步鞋,帆布...">
     <meta name="Keywords" content="乐淘 乐淘鞋城 买鞋子 上乐淘 运动鞋 篮球鞋 帆布鞋 跑步鞋 男鞋 女鞋 足球鞋 休闲鞋 凉鞋 户外鞋 布洛克 高跟鞋 单鞋 豆豆鞋 乐福鞋 牛津鞋 凉拖 皮鞋 短靴 长靴 登山鞋 徒步鞋 硫化鞋 训练鞋 溯溪鞋 越野鞋 板鞋 足球鞋 网球鞋 赛车鞋 雪地靴 马丁靴 商务 英伦">
     <link type="image/x-icon" rel="shortcut icon" href="images/favicon.ico">
-    
+     
 
 	<link rel="stylesheet" href="../assets/mui/css/mui.min.css">
 	<link rel="stylesheet" href="../css/base.css">
-	<link rel="stylesheet" href="../css/adress.css">
+	<link rel="stylesheet" href="../css/editadress.css">
 	<link rel="stylesheet" type="text/css" href="../assets/fa/css/font-awesome.min.css">
 
 	
@@ -22,45 +22,43 @@
 <body>
 	<header>
 		<a href="javascript:history.back();" class="back fa fa-arrow-left"></a>
-		<h1>我的收货地址</h1>
-	    <a  class="newadd" href="editadress.html">添加新地址</a>
+		<h1></h1>
+	   
 
 
 	</header>
 	
 	<div class="zs "><span class="fa fa-spinner" ></span></div>
 
-	<div class="mui-scroll-wrapper">
-		<div class="container mui-scroll">
-			<section class="adress">
-				<ul class="mui-table-view">
-				    <!-- <li class="mui-table-view-cell mui-media">
-				        <a href="javascript:;">
-				            <img class="mui-media-object mui-pull-left" src="../images/none.png">
-				            <div class="mui-media-body">
-				                幸福
-				          		<span class="mobile">1388888888</span>
-				                <p class='mui-ellipsis'>能和心爱的人一起睡觉，是件幸福的事情；可是，打呼噜怎么办？</p>
-				            </div>
-				            <div class="edit">编辑</div>
-				        </a>
-				    </li>
-				    <li class="mui-table-view-cell mui-media">
-				        <a href="javascript:;">
-				            <img class="mui-media-object mui-pull-left" src="../images/none.png">
-				            <div class="mui-media-body">
-				                木屋
-				                <span class="mobile">1388888888</span>
-				                <p class='mui-ellipsis'>想要这样一间小木屋，夏天挫冰吃瓜，冬天围炉取暖.</p>
-				            </div>
-				        </a>
-				    </li> -->
-				    
-				</ul>
+	<section class="adress">
+		<form>
+			<ul class="mui-table-view">
+		    	<li class="mui-table-view-cell name">
+			       收货人姓名 <textarea name="name" ></textarea>
+			     
+			    </li>
+			    <li class="mui-table-view-cell mobl">
+			       电话 <textarea type="text" name="mobl"></textarea>
+			    </li>
+			    <li class="mui-table-view-cell mail">
+			       邮编 <textarea type="text" name="mail"></textarea>			  
+			    </li>
+			    <li class="mui-table-view-cell  city">
+			        地区 <textarea type="text" name="city"></textarea>
+			    </li>
+			     <li  class=" mui-table-view-cell adr">
+			       详细地址 <textarea type="text" name="adr"></textarea>
+			     </li>
 
-			</section>	
-		</div>
-	</div>
+			      <li  class="mui-table-view-cell save">
+			        <button>保存</button> 
+			    </li> 
+			</ul>
+		</form>	
+
+	</section>	
+	
+
 
 
 
@@ -75,9 +73,9 @@
 	</footer>
 
 
-	<script src="../assets/zepto/zepto.min.js"></script>
 	<script src="../assets/mui/js/mui.min.js"></script>
-     <script src="../js/adress.js"></script>
+	<script src="../assets/zepto/zepto.min.js"></script>
+     <script src="../js/editadress.js"></script>
 
  </body>
  </html>

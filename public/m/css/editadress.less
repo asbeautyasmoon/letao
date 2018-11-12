@@ -29,14 +29,7 @@ body{
 	    font-weight: 500;
 	    line-height: 45px;
 	}
-	.newadd{
-		position: absolute;
-		top: 12px;
-		right: 15px;
-		font-size: 13px;
-		color: #fff;
 
-	}
  }
 
 
@@ -65,28 +58,41 @@ body{
 .adress{
 	padding: 45px 0 55px 0;
 	font-size: 14px;
-	ul{
-		li{
-			padding-right: 30px;
-			.mui-media-body{
-				padding-right: 30px;
-				border-right: 1px dashed #ccc;
-			}
-			.edit{
-					    position: absolute;
-					    top: 0px;
-					    right: -2px;
-					    height: 64px;
-					    width: 30px;
-					    line-height: 64px;
-				}
-		}
-		.mobile{
-			float: right;
+	span{
+		margin-left: 10px;
+		color:#ccc;
+	}
+	li{
+		textarea{
+	    // line-height:0;
+	    height: 100%;
+	    margin-bottom: 0;
+	     padding: 0;
+	    -webkit-user-select: text; 
+	    border: none;
+	    border-radius:0;
+	    outline: none;
+	    background-color: none;
+
+	    // position: absolute;
+	    // width: 50%;
+	    // left: 33%;
+	    // top: 0;
+	    font-size: 14px;
+	    color: #888;
+	
+	    
 		}
 	}
-
 	
+	.save{
+		text-align: center;
+		button{
+			background-color: @background-color;
+			color:#fff;
+		}
+
+	}
 }
 
 
