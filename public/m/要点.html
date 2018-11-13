@@ -1,0 +1,260 @@
+观察结构，采取简单的流式布局
+
+实际开发中的几个实用meta标签   <!--ios是否运行创建快捷启动方式--> 注意 这个网上说的是这meta的作用就是删除默认的苹果工具栏和菜单栏。
+	 <meta content="yes" name="apple-mobile-web-app-capable">
+    <!--ios顶部通知栏的样式 黑色-->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <!--遇到数字不让转成电话号码格式--> 实际上还有<meta name="format-detection" content="telephone=no,email=no,adress=no" />
+    <meta content="telephone=no" name="format-detection">
+    <meta name="description" content="乐淘是中国最大的正品运动鞋、皮鞋网上专卖。乐淘网经营的品牌包括耐克、阿迪达斯、李宁、匡威等国内外知名品牌的篮球鞋,板鞋,休闲鞋,跑步鞋,帆布...">
+    <meta name="Keywords" content="乐淘 乐淘鞋城 买鞋子 上乐淘 运动鞋 篮球鞋 帆布鞋 跑步鞋 男鞋 女鞋 足球鞋 休闲鞋 凉鞋 户外鞋 布洛克 高跟鞋 单鞋 豆豆鞋 乐福鞋 牛津鞋 凉拖 皮鞋 短靴 长靴 登山鞋 徒步鞋 硫化鞋 训练鞋 溯溪鞋 越野鞋 板鞋 足球鞋 网球鞋 赛车鞋 雪地靴 马丁靴 商务 英伦">
+
+
+     <link type="image/x-icon" rel="shortcut icon" href="images/favicon.ico"> 网站图标
+
+首页标题边的搜索按钮，如果用浮动，可以先写浮动再写标签，不过实测还是或影响标题居中，所以最好还是定位
+
+轮播图由于使用mui就直接复制其结构再修改
+
+由于轮播图片大小还不一致，如果直接width100% 不设高度的话，高度就有问题，而如果强制设一个高的话，又不能自适应，所以只好用js设置高，我这里直接设置图片高因为简单，如果需要完整比例的话最好按小图的比例设置高，大图仍是100%再ovh
+
+ul 因为li浮动一般要清除浮动有高，这里用mui自带的mui-clearfix清除浮动
+
+"¥ " 可以直接复制也可用 &yen;
+
+text-overflow: ellipsis;  //表示文本超出用省略号代替,但是有控制几行，不然换行就等于白写
+	一、div内显示一行，超出部分用省略号显示
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+	二、div内显示两行或三行，超出部分用省略号显示
+    overflow: hidden;
+    text-overflow: ellipsis;              
+    display: -webkit-box;				   	//将对象作为弹性伸缩盒子模型显示 
+    -webkit-line-clamp: 2;（行数）			
+    -webkit-box-orient: vertical;			//必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。
+
+在mui中有这个样式可以直接调用mui-ellipsis-2
+
+text-decoration:line-through      //删除贯穿线  也可以用s标签1
+
+课上产品块的分页是用一块48% 另一块是用个m-l %4 来做 ，而我是50% 在padding
+
+<span>首页</span> 如果是块级一样可以使用tac居中---区分下： m0 auto是块级元素本身居中，tac是块级或行内块元素（须有宽）中的文字或行内块居中
+
+由于顶部和尾部固定定位，所以才加个容器  再套个div使用mui的区域滚动---父容器ovh 防止出现默认滚动条以及其鼠标滚轮操作；触摸移动内容；到顶回弹
+
+标题里的h1   这个原本是清0了 但是mui里又设置了ml 权重不够 所以这里还要再清
+
+
+分类页：
+    <a href="javascript:history.back();" ></a>  直接可以在跳转地址上这样写，就无需绑定事件了
+
+接口地址是查说明文档的，但是这个写法要注意/category/queryTopCategory
+
+我不用模板引擎，简单的不需要直接jq生成li，这里li可以直接拼接变量，不想拼接就再写一遍
+
+li绑定事件要用委托事件，或者直接在ajax里面写
+
+注意！！奇怪的bug 无法在文件中绑定事件,仔细查看是选择器都无法选择，检查发现是刚开始就加载js 且没有用入口函数！
+
+//注意，委托事件的this 仍是子元素 ，
+
+//加载时默认去第一个分类数据：模拟点击即可，无需再写一遍或者把下面再封装成函数
+
+
+search页：
+ 注意 引入css时 自己写的放在后面引入，这样同样的权重就看覆盖mui的了
+
+ html5 增加的type=search可以做到（但需要input type=search外面包上一层带action属性的form）。欲实现一个文字搜索的功能，要求输入时，键盘回车按钮提示显示为“搜索”
+
+ border-radius 每个角都可以设置离x轴，y轴的
+
+
+ 搜索课上居然不用form action跳转 和method用get 方法，居然搞个a标签用js跳转和拼接实现： location.href = 'searchList.html?key='+key;   
+
+
+搜索列表页：
+    .mui-scroll-wrapper{
+    margin-top: 45px;
+}
+    .searchbox{
+        padding:  0  0 10px 0;     //这里空出padding上边距是可以的，但是这个mui下来刷新添加的div是以大容器为定位的，所以后来又改成大容器空出m-t了（pading的话需要再套个容器）
+
+
+获取地址栏？后参数算法：  window.location.search.substr(1);
+    分割数组：split('字符');  //没有该字符也能直接转变为数组
+     localparm[arrkd[0]]=decodeURI(arrkd[1]) ;   //  把数组转为对象  对中文的url直接转换 严格点其实还应进行编码判断
+     完整把？后传参变为对象的代码
+         var keyd= window.location.search.substr(1);
+         var arrk=keyd.split('&'); 
+         var localparm={};
+         for (var i = 0; i < arrk.length; i++) {
+            var arrkd=arrk[i].split('=');  
+            localparm[arrkd[0]]=decodeURI(arrkd[1]) ;  
+         }
+
+append 里面的html代码不支持换行注意了，只能在拼接的+号出换行
+
+在循环中可以先判断在生成html，这样不必先生成一部分，再判断，再生成下面的html
+
+jq选择当前元素的选择器选择的后代 $(this).find('选择器')
+
+if ($(this).find('.fa-angle-down').length!=0) {     //注意这里的判断即使find没找到，也是存在的，所有不能直接if ($(this).find('.fa-angle-down')) 
+而且没找到的话，进行addclass等操作也不会报错！
+---当然 这里只是尝试 正式判断可以用hasClass
+
+注意变量作为对象的属性名的写法 canshu[$(this).data('sort')]=2;
+
+mui的下来刷新：
+    mui.init({
+      pullRefresh : {
+        container:"#pullrefresh",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+        down : {
+          height:50,//可选,默认50.触发下拉刷新拖动距离,
+          auto: false,//可选,默认false.首次加载自动下拉刷新一次
+          contentdown : "下拉可以刷新",//可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+          contentover : "释放立即刷新",//可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+          contentrefresh : "正在刷新...",//可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+          callback :function () {        //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+            var that=this;
+            $('.product ul').empty();   
+            getdata(canshu,function(){                   //注我们这里的刷新是重新以当前参数获取数据，，而不是重置，更符合逻辑
+                that.endPulldownToRefresh(); 
+            })
+            //this.endPulldownToRefresh();   //必选 停止刷新
+          } 
+        }
+      }
+    });
+
+ up 上拉
+     that.endPullupToRefresh(true);         //  这个上来用true自己会生成没有更多商品了
+
+
+
+
+
+
+
+
+
+ 商品详情页：
+ 从搜索页跳转到详情页有个细节，模拟手机模式时 整个的li的a不跳转，而点a里的button却可以触发跳转。。。
+
+ 如果用mui的消息弹出，注意如果正好和tap事件的点击处一起会发生击穿，从而导致不会弹出消息；解决方法：延迟弹出消息（课上的方法--通常） 或者解决击穿，再或者更改mui源码的消息框显示位置（我自己改1
+
+ 数字金额字符串比较大小问题，问题隐蔽，因为有时会部分成功 所以数字比较哟啊注意转换类型
+
+  尺码号line-height: 35px;   //设置行高是为了以防屏幕宽度不够换行时挤在一起
+
+mui('.mui-slider').slider({      //注意！！1使用ajax的话，必须要加载完毕后初始化这轮播，不然没反弹
+            interval: 2000
+        });
+  
+ 模板引擎就是为了前台衔接的，直接把后台接口的json数据传入，然后在模板中使用属性就可以
+
+ 课上判断图片存在的逻辑有问题 我直接做修改 注意 引号<img src="<%=pic[pic.length-1].picAddr||'images/none.png'%>"/>
+
+ 中间的商品数量应该是可以直接输入的，把span改为input，但是不对齐，所以设置v-a：bottom
+
+        加减算法：  $('.num .jian').on('tap',function(){ 
+                var gms=parseInt($('.num .gms').val());            
+                console.log(gms);     //注意空值parseInt是nan 但是判断不能直接用nan， 也不能用！gms 因为0是false------扩展 nan一般因为函数计算，null空，udf一般是为定义或者获取数据失败
+                if (isNaN(gms)) {
+                    mui.toast('数量不能为空');
+                    return;
+                }
+                gms--;
+                if(gms < 0){
+                    mui.toast('数量不能小于0');
+                    return false;
+                }
+                if (gms>r.num) {
+                    mui.toast('库存不足');    //这里不能return ，在输入大于库存的情况下，只要提示就行了 减还是减的              
+                }          
+                $('.num .gms').val(gms);
+          }); 
+
+ mui的消息提示css自己更改 toast-container{line-height:17px;position:fixed;z-index:9999;bottom:200px;   底部改为从50 改为200
+
+if(gms<=0 || gms>r.num || isNaN(gms)){      // 用否定判断的话 判断的宽度广，但是代码逻辑好写(把不要的否掉退出即可，不需要else) 
+
+购物车： //购物车提交后，后台还有个登陆判断，前端做好数量尺寸的判断提交后，后台再判断登陆，未登录的会返回信息，只有登陆后，后台再一次判断数据，才返回成功
+
+如果未登录跳转至的写法   location.href = 'login.html' + '?returnUrl=' + location.href;
+
+
+
+登陆页：
+ 新的方法：        
+           $("form").serialize(); 获取form的表单的键值(url形式)   
+
+           serializeArray()    序列化表格元素 (类似 '.serialize()' 方法) 返回 JSON 数据结构数据 ---这个格式会添加name和value键，形成 json数组’
+        注意！！！input必须要有name 属性，不然取不到值
+
+ json.(json字符串) 在ie 6 7 不支持 会提示json未兼容，所以用json2.js 插件----js字符串：'{'a':'a1','b':'b1'}'
+
+ 注意 mui的消息提示和jq的append等不支持html语句的直接换行，在mui里会将html里的回车或者/n 转换为<br> ,解决办法就是直接同行写，或者用正则匹配替换空格
+
+ 截取字符串也可以用replace('代替的'，'')如 location.href=window.location.search.substr(1).replace('returnUrl=','');
+ 或者substr： location.href=window.location.search.substr(1).substr(10);
+
+
+
+个人中心：这个应该是跳转前就要进行登陆判断，如果在每个其他页都加上跳转登陆判断麻烦，所以想办法在该页加载前判断
+
+        window.stop(); 停止加载，注意 在location.href前写，不然把跳转页个停了 ，注意 这个不用写了 ，因为跳转了也不存在加载的情况，
+        
+        另外注意 接下来都有写在回掉函数里，以防网络卡了直接执行下面的---写个遮罩，以防网络卡了的情况看到内容或这内容也用js写
+
+        取个人信息这个接口是坑，成功了居然直接返回对象了，我还去判断succss
+
+        //这个登出接口居然不要验证用户名？
+
+收货地址：
+    注意data的用法$('.adress ul li').data('id',r[i].id);  不是直接 data()
+
+    注意添加id的细节 $('.adress ul li').eq(i).data('id',r[i].id); 而不是 $('.adress ul li').data('id',r[i].id); 这样会全部添加成最后一个id
+            当然最好用去最后一个li     $('.adress ul li').last().data('id',r[i].id);  也可以li:last 或者li：last-child 
+
+
+添加/编辑收货地址：
+  
+      1 用收货人接口直接判断是否登陆，取内容
+      2 登陆成功后判断是否有id 改标题
+    为什么onload不起作用？ 因为这个绑定是在ajax里的 等ajax完成后才绑定，这时结构早就加载好了，改标题就直接ajax里写
+
+    原来准备把js 放在开头的，后来发现忘记ajax是异步的了，文档都已经加载好了，然后加上window.stop 这个又会死循环，那就干脆按正常顺序来
+
+    serialize()只支持表单元素的取值！！ 
+    注意input不支持换行 只能用textarea，但是这个只能换行 也不能高度自适应，仍需js设置，所以仍没有span的自动增加高度效果好
+
+    阻止表单提交的方法：1 $('.save').on("click",function (e) {  e.preventDefault();  注意 不能用tap事件  
+                      2  button 改为<button type="button">
+                      3 return false
+
+
+
+    购物车：
+    下拉刷新的mui中 ，这个下拉刷新的字是定位的，所以要么搞个大容器，要么用m-t使字下来不被标题挡住
+
+    上拉加载： that.endPullupToRefresh(true);         //  这个上来用true自己会生成没有更多商品了 ,但是如果再下拉刷新后，这个上拉也不会在执行，还要重置那还不如自己写个没有更多了--- 在上拉刷新中用mui('#pullrefresh').pullRefresh().refresh(true); 注意这个对象类型是mui的不是jq的
+
+
+    //区域滚动 写在渲染数据之后，以防逻辑错误出现滚动不顺问题
+
+    &.mui-active{background-color: #fff!important;     //注意这里需要覆盖本身的a激活后的样式（由于其范围显示不对),但是他用的类选择权重大于我的标签选择，所以我们用important
+                }
+
+    对于jq 有each方法和 $.each  ---js对与数组是foreach --当然还有php的
+    $(selector).each(function(index,element))     注意 这个取出的ele是js元素了 
+
+    购物车删除的接口有问题 按接口文档 传入多个id就会崩溃！！只能传一个id的数组  
+
+    $("input[data-sxid='"+scid[i]+"']").parent().remove();   //直接属性选择器+id拼接即可选择该id的元素    
+
+    sum=parseInt(parseFloat(nowprice)*100); //如果转为浮点数js运算会出现很多小数点，所以直接在乘100转整形
+
+    总金额计算换换一种算法 不单单算一个了 还是重新遍历了 因为在删除和全选时候也要用改计算
