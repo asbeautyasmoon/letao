@@ -1,63 +1,101 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>后台管理系统-首页</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="assets/bootstrap-validator/css/bootstrapValidator.min.css"/>
-    <link rel="stylesheet" href="assets/nprogress/nprogress.css"/>
-    <link rel="stylesheet" href="css/admin.css"/>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>管理中心</title>
+	<link rel="stylesheet" type="text/css" href='assets/bootstrap/css/bootstrap.min.css'>
+	<link rel="stylesheet" type="text/css" href="css/admin.css">
+	<script src="assets/jquery/jquery.min.js"></script>
+	<script src="assets/echarts/echarts.min.js"></script>
+	<script src="js/admin.js"></script>
+
 </head>
 <body>
-<!--侧边栏-->
-<aside class="ad_aside">
-    <!--商标-->
-    <div class="brand"><a href="index.html">ITCAST</a></div>
-    <!--用户-->
-    <div class="user">
-        <img src="images/default.png" alt=""/>
-        <span>超级管理员</span>
-    </div>
-    <!--菜单-->
-    <div class="menu">
-        <ul>
-            <li><a href="userManage.html"><span class="glyphicon glyphicon-user"></span> 用户管理</a></li>
-            <li>
-                <a href="javascript:;"><span class="glyphicon glyphicon-list"></span> 分类管理</a>
-                <div class="child" style="display: none">
-                    <a href="categoryFirst.html">一级分类</a>
-                    <a href="categorySecond.html">二级分类</a>
-                </div>
-            </li>
-            <li><a href="productManage.html"><span class="glyphicon glyphicon-tags"></span> 商品管理</a></li>
-        </ul>
-    </div>
-</aside>
-<!--内容-->
-<section class="ad_section">
-    <!--顶部导航-->
-    <nav class="ad_nav">
-        <a data-menu href="javascript:;"><span class="glyphicon glyphicon-align-justify"></span></a>
-        <a data-logout href="javascript:;"><span class="glyphicon glyphicon-log-out"></span></a>
-    </nav>
-    <div class="container-fluid">
-        <!--路径导航-->
-        <ol class="breadcrumb">
-            <li><a href="#">管理系统</a></li>
-            <li class="active">首页</li>
-        </ol>
-        <div class="ad_content">
-            <div class="picTable"></div>
-            <div class="picTable"></div>
-        </div>
-    </div>
-</section>
-<script src="assets/jquery/jquery.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/bootstrap-validator/js/bootstrapValidator.min.js"></script>
-<script src="assets/nprogress/nprogress.js"></script>
-<script src="assets/echarts/echarts.min.js"></script>
-<script src="js/admin.js"></script>
-<script src="js/index.js"></script>
+	<div class="panel panel-primary">
+		  <div class="panel-heading clearfix">
+			<div class="col-xs-2">
+				<div class="brand">
+					<a href="index.html">ITCAST</a>
+				</div>	
+			</div>
+				<div class='out'>
+					<span class="glyphicon glyphicon-log-out"></span>
+				</div>
+		  </div>
+	 
+	    <aside class="cebianlan col-xs-2 ">
+			 
+		    <!--用户-->
+		    <div class="user">
+		        <img src="images/default.png" alt=""/>
+		        <span>超级管理员</span>
+		    </div>
+		    <!--菜单-->
+		    <div class="menu">
+		        <ul>
+		            <li><a href="userManage.html"><span class="glyphicon glyphicon-user"></span> 用户管理</a></li>
+		            <li>
+		                <a href="javascript:;"><span class="glyphicon glyphicon-list"></span> 分类管理</a>
+		                <div class="child" style="display: none">
+		                    <a href="categoryFirst.html">一级分类</a>
+		                    <a href="categorySecond.html">二级分类</a>
+		                </div>
+		            </li>
+		            <li><a href="productManage.html"><span class="glyphicon glyphicon-tags"></span> 商品管理</a></li>
+		        </ul>
+		    </div>
+	    </aside>
+
+		<div class="main">	
+			<div class="title">
+				<span>首页</span>
+			</div>
+			
+			<div class="context">
+				<div id="zzt" style="height:400px;" class="col-md-6"></div>  <!-- //图表 -->
+				<div id='bzt' style="height:400px;"   class="col-md-6"></div>	
+
+
+
+			</div>
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+
+<!-- 退出登录的模态框 -->
+<div class="modal " id="myModal" tabindex="-1" >  
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" >
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					温馨提示
+				</h4>
+			</div>
+			<div class="modal-body text-danger">
+				您确定要退出登录吗？
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消
+				</button>
+				<button type="button" class="btn btn-primary sure">
+					确定
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+
+
 </body>
 </html>
