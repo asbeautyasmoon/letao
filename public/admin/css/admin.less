@@ -60,9 +60,31 @@ li{
 	.menu{
 		li{
 				margin-top:15px;
-			 a{
+			 &>a{
 			 	color:#ccc;
+			 	
 			 }
+			 .child{overflow: hidden;
+				 		a{	
+				 			color:#ccc;
+				 			display: block;
+				 			padding: 5px;
+				 			background-color: #333;
+				 		}
+				 		.now{
+				 			border-left-color: #3c8dbc;
+						 
+						    color: #fff;
+				 		}
+				 		
+			 	}
+		}
+		.now {
+			a{
+				    border-left-color: #3c8dbc;
+				  
+				    color: #fff;
+			}
 		}
 	}
 
@@ -85,9 +107,38 @@ li{
 }
 
 
+.yijifl,.erjifl{
+	padding: 15px;
+	color:#333;
 
+	#addBtn{
+		margin-bottom:15px;
+	}
+	th{
+		text-align: center;
+	}
+	td{
+		text-align: center;
+	}
+	.btn-info{
+		float: right;
+	    padding: 0 6px;
+	}
+}
 
-
+.erjifl{
+	td{
+		height: 50px;
+		line-height: 50px!important;
+		img{
+			height: 100%;
+		}
+		button{
+			margin-top: 13px;
+		}
+	}
+	
+}
 
 
 
@@ -100,3 +151,42 @@ li{
     transform: translate(-50%);
     color:#333;
 }
+
+#addModal .modal-dialog{             //自己写js调用模态框，所以要写点样式
+	position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%);
+    color:#333;
+}
+
+#addModal{
+	.dropdown{
+		span{
+			font-weight:700;
+			}
+		.dropdown-menu{
+			left:72px;
+		}
+	}
+
+	input,button{
+		margin-top:10px;
+	}	
+	img{
+		display: block;
+	    width: 50%;
+	    margin-top: 10px;
+
+	}
+
+     input[type="file"]{   //隐藏移动input
+		    position: absolute;
+		    top: 0px;
+		    font-size: 20px;
+		    opacity: 0;
+	}
+
+} 
+
+	

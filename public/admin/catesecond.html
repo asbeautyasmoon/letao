@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分类管理</title>
+	<link rel="stylesheet" type="text/css" href='assets/bootstrap/css/bootstrap.min.css'>
+	<link rel="stylesheet" type="text/css" href="assets/nprogress/nprogress.css">
+	<link rel="stylesheet" type="text/css" href="css/admin.css">
+	<link rel="stylesheet" type="text/css" href="assets/myPaginationjs/myPagination.css">
+	<link rel="stylesheet" type="text/css" href="assets/bootstrap-validator/css/bootstrapValidator.css">
+</head>
+<body>
+	<div class="panel panel-primary">
+		 
+
+		<script src='include.js'></script>
+
+
+		<div class="main">	
+			<div class="title">
+				<span>分类管理/二级分类</span>
+			</div>
+			
+			<div class="erjifl">
+            <button id="addBtn" class="btn btn-default mb_15">添加分类</button>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th width="10%">序号</th>
+                    <th width="30%">一级分类名称</th>
+                  	<th width="30%">二级分类名称</th>
+                  	<th width="30%">品牌logo</th>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        
+        </div>
+
+
+		
+		<div style="float: right; margin-right:30px" id="pagination" class="pagination"></div>
+				
+
+		</div>
+	</div>
+
+
+<!-- 添加分类的模态框 -->'
+<form id="form1"  >
+<div class="modal " id="addModal" tabindex="-1" >  
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" >
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					添加分类
+				</h4>
+			</div>
+			<div class="modal-body " >
+				
+				<div class="dropdown form-group" >  <!-- 下拉菜单 -->
+						  <span>一级分类：</span>
+						  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" >
+						    请选择
+						    <span class="caret"></span>
+						  </button>
+						  <input type="hidden" name="yijiflm" value="">   <!-- 这个是为了使用插件验证,同时也可把待提交值直接传过来，到时直接sellize提取  -->
+						  <ul class="dropdown-menu" >
+						    <!-- <li><a href="#">Action</a></li>
+						    <li><a href="#">Another action</a></li>
+						    <li><a href="#">Something else here</a></li>
+						    <li><a href="#">Separated link</a></li> -->
+						  </ul>
+				</div>
+					
+					<div class="form-group">
+					<input type="text" name="addm" placeholder="请输入二级分类名称" class="form-control">
+					</div>
+					<div class="form-group">
+					<button type="button" class="btn btn-default">上传图片</button>
+					<input type="file" name="file">
+					 <input type="hidden" name="erjitu">
+					<img id="picadd" src="images/none.png">
+					</div>
+
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消
+				</button>
+				<button type="button" class="btn btn-primary sure">
+					确定
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+</form>
+
+<!-- 退出登录的模态框 -->
+<div class="modal " id="myModal" tabindex="-1" >  
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" >
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					温馨提示
+				</h4>
+			</div>
+			<div class="modal-body text-danger">
+				您确定要退出登录吗？
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消
+				</button>
+				<button type="button" class="btn btn-primary sure">
+					确定
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+	<script src="assets/jquery/jquery.min.js"></script>
+	<script src="assets/nprogress/nprogress.js"></script>    <!-- 注意 这个需要在文档加载后引入，不然会报错 -->
+	<script src="assets/myPaginationjs/myPagination.js"></script>
+	<script src='assets/bootstrap-validator/js/bootstrapValidator.min.js'></script>
+	<script src="js/catesecond.js"></script>
+
+
+</body>
+</html>

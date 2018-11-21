@@ -4,15 +4,13 @@
 	<meta charset="UTF-8">
 	<title>管理中心</title>
 	<link rel="stylesheet" type="text/css" href='assets/bootstrap/css/bootstrap.min.css'>
+	<link rel="stylesheet" type="text/css" href="assets/nprogress/nprogress.css">
 	<link rel="stylesheet" type="text/css" href="css/admin.css">
-	<script src="assets/jquery/jquery.min.js"></script>
-	<script src="assets/echarts/echarts.min.js"></script>
-	<script src="js/admin.js"></script>
-
+	
 </head>
 <body>
-	<div class="panel panel-primary">
-		  <div class="panel-heading clearfix">
+	   <div class="panel panel-primary">
+		  <!-- <div class="panel-heading clearfix">
 			<div class="col-xs-2">
 				<div class="brand">
 					<a href="index.html">ITCAST</a>
@@ -23,15 +21,15 @@
 				</div>
 		  </div>
 	 
-	    <aside class="cebianlan col-xs-2 ">
+	    <aside class="cebianlan col-xs-2 "> --> 
 			 
 		    <!--用户-->
-		    <div class="user">
+		    <!-- <div class="user">
 		        <img src="images/default.png" alt=""/>
 		        <span>超级管理员</span>
-		    </div>
+		    </div> -->
 		    <!--菜单-->
-		    <div class="menu">
+		    <!-- <div class="menu">
 		        <ul>
 		            <li><a href="userManage.html"><span class="glyphicon glyphicon-user"></span> 用户管理</a></li>
 		            <li>
@@ -44,7 +42,10 @@
 		            <li><a href="productManage.html"><span class="glyphicon glyphicon-tags"></span> 商品管理</a></li>
 		        </ul>
 		    </div>
-	    </aside>
+	    </aside> -->
+
+		<script src='include.js'></script>
+
 
 		<div class="main">	
 			<div class="title">
@@ -95,6 +96,10 @@
 	</div><!-- /.modal -->
 </div>
 
+<script src="assets/jquery/jquery.min.js"></script>
+	<script src="assets/echarts/echarts.min.js"></script>
+	<script src="assets/nprogress/nprogress.js"></script>    <!-- 注意 这个需要在文档加载后引入，不然会报错 -->
+	<script src="js/admin.js"></script>
 
 
 </body>

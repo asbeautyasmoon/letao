@@ -22,7 +22,9 @@
     								// 				e.preventDefault();
    									// 							 //提交逻辑
 												// 				});
-//
+//方法：手动验证表单：  $("form").bootstrapValidator('validate');  //提交验证
+//		验证是否通过  .isValid()) 
+//		/重置  $("#form1").data('bootstrapValidator').resetForm();   /
 	 $(function () {
         $('form').bootstrapValidator({
         	live: 'enabled',//验证时机，enabled是内容有变化就验证（默认），disabled和submitted是提交再验证
@@ -87,31 +89,35 @@
 
 //点击登陆
 $('.dl').on('click',function(){
-	 var input=$('form').serialize();
-	//把url转为json	                   
-	 var arrk=input.split('&');  
-	 var localparm={};
-	 for (var i = 0; i < arrk.length; i++) {
-	 	 var arrkd=arrk[i].split('=');     
-	 	 localparm[arrkd[0]]=decodeURI(arrkd[1]) ;    
+	 $("form").bootstrapValidator('validate');  //提交验证
+	 if ($("form").data('bootstrapValidator').isValid()) {
+	 	var input=$('form').serialize();
+		//把url转为json	                   
+		 var arrk=input.split('&');  
+		 var localparm={};
+		 for (var i = 0; i < arrk.length; i++) {
+		 	 var arrkd=arrk[i].split('=');     
+		 	 localparm[arrkd[0]]=decodeURI(arrkd[1]) ;    
+		 }
+
+		//注意，jq的ajax 可以直接传入.serialize()的内容，通过查看，可以看到他已经自动转为inputname：value   inputname：value的格式了
+
+		$.post('/employee/employeeLogin',{username:localparm.name,password:localparm.pasw},function(r){
+			console.log(r);
+			if (r.error==1000) {  //服务器返回错误1000是用户名错误 
+				$('form').data('bootstrapValidator').updateStatus("name",  "INVALID",'callback');
+
+			}
+			else if (r.error==1001) { 
+				$('form').data('bootstrapValidator').updateStatus("pasw",  "INVALID",'callback');
+			}
+			else if (r.success){
+				//location.href='index.html?username='+localparm.name+'&password='+localparm.pasw; //跳转时不能明文
+				 location.href='index.html';
+			}
+
+
+		});
 	 }
-
-	//注意，jq的ajax 可以直接传入.serialize()的内容，通过查看，可以看到他已经自动转为inputname：value   inputname：value的格式了
-
-	$.post('/employee/employeeLogin',{username:localparm.name,password:localparm.pasw},function(r){
-		console.log(r);
-		if (r.error==1000) {  //服务器返回错误1000是用户名错误 
-			$('form').data('bootstrapValidator').updateStatus("name",  "INVALID",'callback');
-
-		}
-		else if (r.error==1001) { 
-			$('form').data('bootstrapValidator').updateStatus("pasw",  "INVALID",'callback');
-		}
-		else if (r.success){
-			//location.href='index.html?username='+localparm.name+'&password='+localparm.pasw; //跳转时不能明文
-			 location.href='index.html';
-		}
-
-
-	});
+	 
 })

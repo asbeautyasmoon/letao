@@ -1,3 +1,18 @@
+//进度条
+NProgress.configure({ showSpinner: false });
+$(window).ajaxStart(function () {                //这个要写在ajax请求前
+    /*只要使用的ajax就会执行这个方法*/
+    //开启进度条
+ 
+    NProgress.start();                      
+});
+$(window).ajaxComplete(function () {
+    /*结束进度条*/
+    NProgress.done();
+});
+
+
+
 
 	$.get('/employee/checkRootLogin',{},function(r){    //接口判断是否登录
 		console.log(r);
@@ -144,14 +159,7 @@
 	});
  
 
-//进度条
-// NProgress.configure({ showSpinner: false });
-// $(window).ajaxStart(function () {
-//     /*只要使用的ajax就会执行这个方法*/
-//     //开启进度条
-//     NProgress.start();
-// });
-// $(window).ajaxComplete(function () {
-//     /*结束进度条*/
-//     NProgress.done();
-// });
+//左边菜单栏的下滑 需用到jq
+$('.menu .fl').on("click",function(){
+	$(this).find('.child').slideToggle();
+})

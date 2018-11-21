@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分类管理</title>
+	<link rel="stylesheet" type="text/css" href='assets/bootstrap/css/bootstrap.min.css'>
+	<link rel="stylesheet" type="text/css" href="assets/nprogress/nprogress.css">
+	<link rel="stylesheet" type="text/css" href="css/admin.css">
+	<link rel="stylesheet" type="text/css" href="assets/myPaginationjs/myPagination.css">
+	
+</head>
+<body>
+	<div class="panel panel-primary">
+		 
+
+		<script src='include.js'></script>
+
+
+		<div class="main">	
+			<div class="title">
+				<span>分类管理/一级分类</span>
+			</div>
+			
+			<div class="yijifl">
+            <button id="addBtn" class="btn btn-default mb_15">添加分类</button>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th width="10%">序号</th>
+                    <th width="30%">分类名称</th>
+                  
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        
+        </div>
+
+
+		
+		<div style="float: right; margin-right:30px" id="pagination" class="pagination"></div>
+				
+
+		</div>
+	</div>
+
+
+<!-- 添加分类的模态框 -->
+<div class="modal " id="addModal" tabindex="-1" >  
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" >
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					添加分类
+				</h4>
+			</div>
+			<div class="modal-body ">
+				<input type="text" name="addm" placeholder="请输入一级分类名称" class="form-control">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消
+				</button>
+				<button type="button" class="btn btn-primary sure">
+					确定
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+
+<!-- 退出登录的模态框 -->
+<div class="modal " id="myModal" tabindex="-1" >  
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" >
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					温馨提示
+				</h4>
+			</div>
+			<div class="modal-body text-danger">
+				您确定要退出登录吗？
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消
+				</button>
+				<button type="button" class="btn btn-primary sure">
+					确定
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
+	<script src="assets/jquery/jquery.min.js"></script>
+	<script src="assets/nprogress/nprogress.js"></script>    <!-- 注意 这个需要在文档加载后引入，不然会报错 -->
+	<script src="assets/myPaginationjs/myPagination.js"></script>
+	<script src="js/cate.js"></script>
+
+
+</body>
+</html>
